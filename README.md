@@ -1,74 +1,102 @@
-# Family Task Tracker — Vercel Deploy Guide
+# Family Task Tracker — Vercel + Resend Deploy Guide
 
-## Files
+## Files in this repo
+
 | File | Purpose |
 |---|---|
-| `index.html` | Main app — all features |
-| `inject-env.js` | Vercel serverless function that injects env vars |
+| `index.html` | Full app (all features) |
+| `inject-env.js` | Vercel function — injects env vars securely into the HTML |
+| `api/send-email.js` | Vercel API route — sends summary email via Resend |
 | `vercel.json` | Routing config |
 
 ---
 
-## Deploy to Vercel
+## 1. Push to GitHub
 
-### 1. Push to GitHub
 ```bash
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Task Tracker v2"
 git remote add origin https://github.com/YOUR_USERNAME/task-tracker.git
 git push -u origin main
 ```
 
-### 2. Import into Vercel
-- Go to [vercel.com](https://vercel.com) → New Project → Import from GitHub
-- Select your repo → Deploy
+## 2. Import into Vercel
 
-### 3. Set Environment Variables
-In Vercel → Project → Settings → **Environment Variables**, add:
+Go to [vercel.com](https://vercel.com) → New Project → Import from GitHub → select repo → Deploy.
 
-| Name | Value |
-|---|---|
-| `GEMINI_API_KEY` | Your Gemini API key from Google AI Studio |
-| `ADMIN_PASSWORD` | Your chosen admin password (default: `family2025`) |
+## 3. Set Environment Variables
 
-Then **Redeploy** after setting variables.
+In Vercel → Project → Settings → **Environment Variables**:
+
+| Name | Value | Notes |
+|---|---|---|
+| `ADMIN_PASSWORD` | `your_password` | Password to unlock admin mode |
+| `GEMINI_API_KEY` | `AIza...` | From [aistudio.google.com](https://aistudio.google.com) |
+| `RESEND_API_KEY` | `re_...` | From [resend.com](https://resend.com) |
+| `EMAIL_FROM` | `Task Tracker <noreply@yourdomain.com>` | Must be a verified Resend domain |
+
+Then **Redeploy** after adding variables.
+
+---
+
+## Getting API Keys
+
+### Gemini API Key (Tamil translation)
+1. Go to [aistudio.google.com](https://aistudio.google.com)
+2. Sign in → Get API key → Create key → Copy
+
+### Resend API Key (Email)
+1. Go to [resend.com](https://resend.com) → Sign up (free)
+2. API Keys → Create API Key → Copy (`re_...`)
+3. Domains → Add your domain → verify DNS records
+4. Set `EMAIL_FROM` to `Name <noreply@yourdomain.com>` (must match verified domain)
+   - **Testing without a domain:** Use `onboarding@resend.dev` as from address, but you can only send to the email you signed up with
 
 ---
 
 ## Features
 
-### ✅ Tamil Translation & Text-to-Speech
-- Every task in **Dass's** sections shows an automatic Tamil translation below the English text
-- The 🔊 button speaks the task aloud in Tamil using your device's TTS engine
-- Translation priority: Static map → Gemini API → MyMemory fallback
-- Grocery items also have a 🔊 Tamil speak button
+### ➕ Rich Task Assignment (Admin Only)
+After logging in as Admin, the **＋ Assign Task** button appears in the header.
 
-### ✅ Admin Mode (Password Protected)
-- Click **🔒 Admin** in the header
-- Enter your admin password (set in Vercel env vars)
-- Admin mode unlocks: Add task rows + Delete (🗑) buttons for all sections and grocery
-- Click **Log out** in the admin banner to lock again
+Each task assignment includes:
+- **Task Name** — what needs to be done
+- **Assign To** — one or multiple people (Karthiga, Dass, Amma, Appa, Ajitha, Selvi)
+- **Due Date** — deadline with overdue/today/upcoming visual badges
+- **Add To** — Weekly board or Daily board
+- **Priority** — 🔴 High / 🟡 Medium / 🔵 Low (shown as coloured badges)
+- **Note / Extra Info** — context, instructions, reminders
+- **Tamil Translation & TTS toggle** — per-task control for whether Tamil text and speak button appear
 
-### ✅ Enhanced Grocery List
-- Items grouped by category (Veggies, Dairy, Grains, Spices, etc.)
-- Quantity badges, category tags, Tamil speak button per item
-- "Clear bought" and "Clear all" action buttons
-- Nicer card design with gradient header and icon
+### 🌐 Tamil Language — User's Choice
+A preference bar at the top of Daily Tasks lets anyone toggle:
+- **Tamil Text** — shows translated Tamil text below each task (for Dass & Selvi sections)
+- **🔊 Speak** — enables the speak button for TTS
 
-### ✅ All Original Features Preserved
-- Weekly & Daily tabs
-- Day navigation with dot strip
-- Per-person progress bars
+These preferences persist across sessions. The per-task Tamil toggle in the assignment modal provides a second level of control (admin sets it per task).
+
+Translation uses: Gemini API → static map → MyMemory (fallback). Always works.
+
+### 📧 Daily Summary Email (Resend)
+Located at the bottom of Daily Tasks:
+- Enter recipient email → **📤 Send Now** to trigger manually anytime
+- Toggle **Auto-send at 9 PM** (tab must be open)
+
+The email includes:
+- Overall progress bar
+- Today's tasks per person (done/pending, priority, due date, notes)
+- This week's tasks per person
+- Grocery items still needed
+
+### 🔒 Admin Mode (Password Protected)
+- Click **🔒 Admin** → enter password → unlocks add rows + 🗑 delete buttons
+- **＋ Assign Task** button appears for rich task assignment
+- Quick-add rows still available per section for fast entry
+
+### All original features preserved
+- Weekly & Daily navigation
+- Day-strip dots, progress bars
 - Google Sheets sync
-- Due date badges (overdue / today / upcoming)
 - Inline double-click editing
-- Local storage with Google Sheets sync
-
----
-
-## Get a Gemini API Key
-1. Go to [aistudio.google.com](https://aistudio.google.com)
-2. Sign in → Get API key
-3. Create a new key → Copy it
-4. Paste into Vercel environment variable `GEMINI_API_KEY`
+- Local storage persistence
