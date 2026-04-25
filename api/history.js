@@ -1,4 +1,2 @@
 const { serveWithEnv } = require('./_inject.js');
-module.exports = function handler(req, res) {
-  serveWithEnv(res, '_html/history.html');
-};
+module.exports = function handler(req, res) { serveWithEnv(res, 'history.html'); };

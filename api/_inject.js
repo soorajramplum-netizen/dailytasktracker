@@ -2,14 +2,15 @@
 const fs   = require('fs');
 const path = require('path');
 
-function serveWithEnv(res, relativeHtmlPath) {
-  const filePath = path.join(process.cwd(), relativeHtmlPath);
+function serveWithEnv(res, htmlFilename) {
+  // __dirname = /var/task/api on Vercel, so go up one level to project root
+  const filePath = path.join(__dirname, '..', '_html', htmlFilename);
 
   let html;
   try {
     html = fs.readFileSync(filePath, 'utf8');
   } catch (e) {
-    res.status(404).send('Page not found: ' + relativeHtmlPath);
+    res.status(404).send('Page not found: ' + filePath);
     return;
   }
 
