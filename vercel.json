@@ -1,8 +1,19 @@
 {
-  "rewrites": [
-    { "source": "/admin",   "destination": "/api/admin" },
-    { "source": "/person",  "destination": "/api/person" },
-    { "source": "/history", "destination": "/api/history" },
-    { "source": "/",        "destination": "/api/index" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "inject-env.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/inject-env.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
