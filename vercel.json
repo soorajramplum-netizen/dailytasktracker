@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "/pages/admin.html" },
-    { "source": "/history", "destination": "/pages/history.html" },
-    { "source": "/person", "destination": "/pages/person.html" }
+    { "source": "/",        "destination": "/api/index" },
+    { "source": "/admin",   "destination": "/api/admin" },
+    { "source": "/person",  "destination": "/api/person" },
+    { "source": "/history", "destination": "/api/history" }
   ]
 }
