@@ -1,0 +1,250 @@
+/* ── Person Page ── */
+
+.person-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.person-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.person-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.progress-summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-count {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.progress-count span {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+
+.progress-right {
+  flex: 1;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ── Slot Group ── */
+.slot-group {
+  margin-bottom: 28px;
+}
+
+.slot-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.slot-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.slot-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.slot-dot.morning   { background: var(--morning); }
+.slot-dot.afternoon { background: var(--afternoon); }
+.slot-dot.evening   { background: var(--evening); }
+.slot-dot.specific  { background: var(--specific); }
+
+.slot-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+/* ── Task Item ── */
+.task-item {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.task-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+}
+.task-item.morning::before   { background: var(--morning); }
+.task-item.afternoon::before { background: var(--afternoon); }
+.task-item.evening::before   { background: var(--evening); }
+.task-item.specific::before  { background: var(--specific); }
+
+.task-item.done {
+  background: var(--bg-subtle);
+  border-color: transparent;
+}
+
+.task-item.done .task-title {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+/* ── Checkbox ── */
+.task-checkbox {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg);
+}
+
+.task-checkbox:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.task-checkbox.checked {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.task-checkbox.checked::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 10px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+/* Animation when checked */
+@keyframes checkPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.task-checkbox.pop { animation: checkPop 0.25s ease; }
+
+.task-body { flex: 1; min-width: 0; }
+
+.task-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.task-time {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.task-done-time {
+  font-size: 0.74rem;
+  color: var(--success);
+}
+
+.task-recurring-badge {
+  font-size: 0.68rem;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* ── All done state ── */
+.all-done-banner {
+  background: linear-gradient(135deg, #E8F5F0, #F0EDFB);
+  border: 1px solid #C0DDD4;
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.all-done-banner .done-icon { font-size: 3rem; margin-bottom: 12px; }
+.all-done-banner h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--success); }
+.all-done-banner p  { color: var(--text-muted); font-size: 0.875rem; margin-top: 6px; }
+
+/* ── No tasks ── */
+.no-tasks {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.no-tasks .no-tasks-icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.4; }
+.no-tasks h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--text-muted); }
+.no-tasks p { font-size: 0.875rem; color: var(--text-light); margin-top: 8px; }
+
+@media (max-width: 600px) {
+  .task-item { padding: 14px 14px 14px 18px; }
+  .progress-summary { flex-direction: column; align-items: flex-start; gap: 12px; }
+}

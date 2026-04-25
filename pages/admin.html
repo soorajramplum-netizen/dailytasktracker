@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Household Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Header -->
+    <header class="page-header">
+      <div>
+        <h1>Admin <span>Dashboard</span></h1>
+        <div class="subtitle" id="admin-date-display">Loading…</div>
+      </div>
+      <nav class="nav">
+        <a href="/" class="nav-link">🏠 Home</a>
+        <a href="/history" class="nav-link">📊 History</a>
+      </nav>
+    </header>
+
+    <!-- Date Navigation -->
+    <div class="date-nav">
+      <button class="date-nav-btn" id="date-prev">←</button>
+      <button class="today-btn" id="date-today">Today</button>
+      <button class="date-nav-btn" id="date-next">→</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="tasks">All Tasks</button>
+      <button class="tab-btn" data-tab="templates">Recurring</button>
+      <button class="tab-btn" data-tab="summary">AI Summary</button>
+    </div>
+
+    <!-- ── TAB: Overview ── -->
+    <div class="tab-panel active" id="tab-overview">
+      <div class="overview-grid" id="overview-grid">
+        <div class="loading-state"><span class="spinner"></span></div>
+      </div>
+
+      <!-- Add Task Panel (always visible) -->
+      <div class="add-task-panel">
+        <h3>➕ Add Task</h3>
+        <div class="add-task-grid">
+          <div class="form-group full">
+            <label class="form-label">Task Title *</label>
+            <input type="text" id="add-task-title" class="form-input" placeholder="e.g. Sweep the living room">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Person *</label>
+            <select id="add-task-person" class="form-select"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Time Slot *</label>
+            <select id="add-task-slot" class="form-select">
+              <option value="morning">🌅 Morning</option>
+              <option value="afternoon">☀️ Afternoon</option>
+              <option value="evening">🌙 Evening</option>
+              <option value="specific">⏰ Specific Time</option>
+            </select>
+          </div>
+          <div class="form-group" id="add-task-time-wrap" style="display:none">
+            <label class="form-label">Specific Time</label>
+            <input type="time" id="add-task-time" class="form-input">
+          </div>
+        </div>
+        <div class="add-task-actions">
+          <button class="btn btn-primary" id="add-task-btn">Add Task</button>
+          <label style="display:flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--text-muted);cursor:pointer">
+            <input type="checkbox" id="add-task-recurring" style="width:16px;height:16px;accent-color:var(--accent)">
+            Also save as recurring task
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TAB: All Tasks ── -->
+    <div class="tab-panel" id="tab-tasks">
+      <div class="admin-task-list" id="tasks-list">
+        <div class="loading-state"><span class="spinner"></span></div>
+      </div>
+    </div>
+
+    <!-- ── TAB: Recurring Templates ── -->
+    <div class="tab-panel" id="tab-templates">
+      <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:16px">
+        Recurring tasks are automatically added every day. Select a person to manage their templates.
+      </p>
+      <div class="templates-person-select" id="template-person-pills"></div>
+      <div class="admin-task-list" id="templates-list">
+        <div class="empty-state"><div class="empty-icon">👆</div><p>Select a person above.</p></div>
+      </div>
+    </div>
+
+    <!-- ── TAB: AI Summary ── -->
+    <div class="tab-panel" id="tab-summary">
+      <div class="summary-panel">
+        <h3>Daily Summary</h3>
+        <p class="summary-desc">
+          Gemini will generate a warm, natural language summary of today's task completions.
+          Optionally send it to your email.
+        </p>
+        <div class="form-group" style="margin-bottom:16px;max-width:360px">
+          <label class="form-label">Send to email (optional)</label>
+          <input type="email" id="summary-email" class="form-input" placeholder="you@example.com">
+        </div>
+        <button class="btn btn-primary" id="generate-summary-btn">✨ Generate Summary</button>
+        <div style="margin-top:20px">
+          <div class="form-label" style="margin-bottom:8px">Generated Summary</div>
+          <div class="summary-output" id="summary-output">
+            Click "Generate Summary" to create today's report.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
