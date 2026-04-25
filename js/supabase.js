@@ -1,11 +1,21 @@
 // ── supabase.js ──
 // All Supabase interactions live here.
-// Reads SUPABASE_URL and SUPABASE_ANON_KEY from window.ENV (injected at runtime).
+// ENV is read lazily inside sbFetch so window.ENV is always populated by then.
 
-const SUPABASE_URL     = window.ENV?.SUPABASE_URL     || '';
-const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY || '';
+function getEnv() {
+  return {
+    url: window.ENV?.SUPABASE_URL     || '',
+    key: window.ENV?.SUPABASE_ANON_KEY || '',
+  };
+}
 
 async function sbFetch(path, options = {}) {
+  const { url: SUPABASE_URL, key: SUPABASE_ANON_KEY } = getEnv();
+
+  if (!SUPABASE_URL) {
+    throw new Error('SUPABASE_URL is not set. Check your environment variables.');
+  }
+
   const url = `${SUPABASE_URL}/rest/v1/${path}`;
   const res = await fetch(url, {
     ...options,
@@ -94,13 +104,9 @@ export async function deleteDailyTask(id) {
 }
 
 // ── Generate daily tasks from templates ──────────────────
-// Call once per day (admin triggers this or cron does via API route)
 export async function generateDailyFromTemplates(date) {
-  const people    = await getPeople();
   const templates = await getTemplates();
-
-  // Check which template IDs are already in today's daily_tasks
-  const existing = await getDailyTasks(date);
+  const existing  = await getDailyTasks(date);
   const existingTemplateIds = new Set(
     existing.filter(t => t.template_id).map(t => t.template_id)
   );
