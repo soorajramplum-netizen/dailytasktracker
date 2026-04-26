@@ -418,13 +418,10 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
     <span class="prog-pct" id="d-prog-pct">0%</span>
   </div>
 
-  <!-- Tamil pref bar -->
-  <div class="tamil-bar">
-    <span class="tamil-bar-lbl">🌐 Tamil Options (applies to Dass &amp; Selvi)</span>
-    <div style="display:flex;gap:14px;flex-wrap:wrap">
-      <label class="pref-tog"><input type="checkbox" id="pref-text" onchange="savePref()"> Tamil Text</label>
-      <label class="pref-tog"><input type="checkbox" id="pref-tts" onchange="savePref()"> 🔊 Speak</label>
-    </div>
+  <!-- Tamil pref toggles (no label text) -->
+  <div class="tamil-bar" style="justify-content:flex-end;padding:8px 16px;">
+    <label class="pref-tog"><input type="checkbox" id="pref-text" onchange="savePref()"> Tamil Text</label>
+    <label class="pref-tog"><input type="checkbox" id="pref-tts" onchange="savePref()"> 🔊 Speak</label>
   </div>
 
   <div class="grid2">
@@ -452,6 +449,58 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       <div class="add-row hidden" id="d-add-d">
         <input class="add-inp" id="d-inp-d" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('d','daily')">
         <button class="add-go ab-d" onclick="quickAdd('d','daily')">＋</button>
+      </div>
+    </div>
+    <!-- Amma Daily -->
+    <div class="sec sam">
+      <div class="sec-hdr" style="background:linear-gradient(135deg,#faf3ff,#fff)">
+        <div class="av av-am">AM</div><div class="sec-name">Amma</div>
+        <div class="sec-cnt" id="d-cnt-amma">0/0</div>
+      </div>
+      <div class="mini-track"><div class="mini-fill mf-am" id="d-mini-amma"></div></div>
+      <div class="task-list" id="d-list-amma"></div>
+      <div class="add-row hidden" id="d-add-amma">
+        <input class="add-inp" id="d-inp-amma" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('amma','daily')">
+        <button class="add-go ab-am" onclick="quickAdd('amma','daily')">＋</button>
+      </div>
+    </div>
+    <!-- Appa Daily -->
+    <div class="sec sap">
+      <div class="sec-hdr" style="background:linear-gradient(135deg,#f3fff8,#fff)">
+        <div class="av av-ap">AP</div><div class="sec-name">Appa</div>
+        <div class="sec-cnt" id="d-cnt-appa">0/0</div>
+      </div>
+      <div class="mini-track"><div class="mini-fill mf-ap" id="d-mini-appa"></div></div>
+      <div class="task-list" id="d-list-appa"></div>
+      <div class="add-row hidden" id="d-add-appa">
+        <input class="add-inp" id="d-inp-appa" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('appa','daily')">
+        <button class="add-go ab-ap" onclick="quickAdd('appa','daily')">＋</button>
+      </div>
+    </div>
+    <!-- Ajitha Daily -->
+    <div class="sec saj" style="grid-column:1/-1">
+      <div class="sec-hdr" style="background:linear-gradient(135deg,#fff3f7,#fff)">
+        <div class="av av-aj">AJ</div><div class="sec-name">Ajitha</div>
+        <div class="sec-cnt" id="d-cnt-ajitha">0/0</div>
+      </div>
+      <div class="mini-track"><div class="mini-fill mf-aj" id="d-mini-ajitha"></div></div>
+      <div class="task-list" id="d-list-ajitha"></div>
+      <div class="add-row hidden" id="d-add-ajitha">
+        <input class="add-inp" id="d-inp-ajitha" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('ajitha','daily')">
+        <button class="add-go ab-aj" onclick="quickAdd('ajitha','daily')">＋</button>
+      </div>
+    </div>
+    <!-- Selvi Daily -->
+    <div class="sec ssl" style="grid-column:1/-1">
+      <div class="sec-hdr" style="background:linear-gradient(135deg,#fffaf0,#fff)">
+        <div class="av av-sl">SL</div><div class="sec-name">Selvi</div>
+        <div class="sec-cnt" id="d-cnt-selvi">0/0</div>
+      </div>
+      <div class="mini-track"><div class="mini-fill mf-sl" id="d-mini-selvi"></div></div>
+      <div class="task-list" id="d-list-selvi"></div>
+      <div class="add-row hidden" id="d-add-selvi">
+        <input class="add-inp" id="d-inp-selvi" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('selvi','daily')">
+        <button class="add-go ab-sl" onclick="quickAdd('selvi','daily')">＋</button>
       </div>
     </div>
   </div>
@@ -978,7 +1027,7 @@ function updateSectionCounts(prefix, tasks){
 /* ═══════════════════════════════════
    DAILY
 ═══════════════════════════════════ */
-const D_PEOPLE=['k','d'];
+const D_PEOPLE=['k','d','amma','appa','ajitha','selvi'];
 
 async function renderDaily(){
   const dateKey=todayStr(dOff);
