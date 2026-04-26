@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily & Weekly Task Tracker</title>
+<title>Task Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script>/* __ENV_INJECT__ */</script>
 <style>
@@ -418,12 +418,6 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
     <span class="prog-pct" id="d-prog-pct">0%</span>
   </div>
 
-  <!-- Tamil pref toggles (no label text) -->
-  <div class="tamil-bar" style="justify-content:flex-end;padding:8px 16px;">
-    <label class="pref-tog"><input type="checkbox" id="pref-text" onchange="savePref()"> Tamil Text</label>
-    <label class="pref-tog"><input type="checkbox" id="pref-tts" onchange="savePref()"> 🔊 Speak</label>
-  </div>
-
   <div class="grid2">
     <!-- Karthiga Daily -->
     <div class="sec sk">
@@ -433,7 +427,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-k" id="d-mini-k"></div></div>
       <div class="task-list" id="d-list-k"></div>
-      <div class="add-row hidden" id="d-add-k">
+      <div class="add-row" id="d-add-k">
         <input class="add-inp" id="d-inp-k" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('k','daily')">
         <button class="add-go ab-k" onclick="quickAdd('k','daily')">＋</button>
       </div>
@@ -446,7 +440,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-d" id="d-mini-d"></div></div>
       <div class="task-list" id="d-list-d"></div>
-      <div class="add-row hidden" id="d-add-d">
+      <div class="add-row" id="d-add-d">
         <input class="add-inp" id="d-inp-d" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('d','daily')">
         <button class="add-go ab-d" onclick="quickAdd('d','daily')">＋</button>
       </div>
@@ -459,7 +453,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-am" id="d-mini-amma"></div></div>
       <div class="task-list" id="d-list-amma"></div>
-      <div class="add-row hidden" id="d-add-amma">
+      <div class="add-row" id="d-add-amma">
         <input class="add-inp" id="d-inp-amma" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('amma','daily')">
         <button class="add-go ab-am" onclick="quickAdd('amma','daily')">＋</button>
       </div>
@@ -472,7 +466,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-ap" id="d-mini-appa"></div></div>
       <div class="task-list" id="d-list-appa"></div>
-      <div class="add-row hidden" id="d-add-appa">
+      <div class="add-row" id="d-add-appa">
         <input class="add-inp" id="d-inp-appa" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('appa','daily')">
         <button class="add-go ab-ap" onclick="quickAdd('appa','daily')">＋</button>
       </div>
@@ -485,7 +479,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-aj" id="d-mini-ajitha"></div></div>
       <div class="task-list" id="d-list-ajitha"></div>
-      <div class="add-row hidden" id="d-add-ajitha">
+      <div class="add-row" id="d-add-ajitha">
         <input class="add-inp" id="d-inp-ajitha" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('ajitha','daily')">
         <button class="add-go ab-aj" onclick="quickAdd('ajitha','daily')">＋</button>
       </div>
@@ -498,7 +492,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-sl" id="d-mini-selvi"></div></div>
       <div class="task-list" id="d-list-selvi"></div>
-      <div class="add-row hidden" id="d-add-selvi">
+      <div class="add-row" id="d-add-selvi">
         <input class="add-inp" id="d-inp-selvi" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('selvi','daily')">
         <button class="add-go ab-sl" onclick="quickAdd('selvi','daily')">＋</button>
       </div>
@@ -567,7 +561,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-k" id="w-mini-k"></div></div>
       <div class="task-list" id="w-list-k"></div>
-      <div class="add-row hidden" id="w-add-k">
+      <div class="add-row" id="w-add-k">
         <input class="add-inp" id="w-inp-k" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('k','weekly')">
         <input class="add-date" type="date" id="w-date-k">
         <button class="add-go ab-k" onclick="quickAdd('k','weekly')">＋</button>
@@ -581,7 +575,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-d" id="w-mini-d"></div></div>
       <div class="task-list" id="w-list-d"></div>
-      <div class="add-row hidden" id="w-add-d">
+      <div class="add-row" id="w-add-d">
         <input class="add-inp" id="w-inp-d" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('d','weekly')">
         <input class="add-date" type="date" id="w-date-d">
         <button class="add-go ab-d" onclick="quickAdd('d','weekly')">＋</button>
@@ -595,7 +589,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-am" id="w-mini-amma"></div></div>
       <div class="task-list" id="w-list-amma"></div>
-      <div class="add-row hidden" id="w-add-amma">
+      <div class="add-row" id="w-add-amma">
         <input class="add-inp" id="w-inp-amma" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('amma','weekly')">
         <input class="add-date" type="date" id="w-date-amma">
         <button class="add-go ab-am" onclick="quickAdd('amma','weekly')">＋</button>
@@ -609,7 +603,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-ap" id="w-mini-appa"></div></div>
       <div class="task-list" id="w-list-appa"></div>
-      <div class="add-row hidden" id="w-add-appa">
+      <div class="add-row" id="w-add-appa">
         <input class="add-inp" id="w-inp-appa" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('appa','weekly')">
         <input class="add-date" type="date" id="w-date-appa">
         <button class="add-go ab-ap" onclick="quickAdd('appa','weekly')">＋</button>
@@ -623,7 +617,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-aj" id="w-mini-ajitha"></div></div>
       <div class="task-list" id="w-list-ajitha"></div>
-      <div class="add-row hidden" id="w-add-ajitha">
+      <div class="add-row" id="w-add-ajitha">
         <input class="add-inp" id="w-inp-ajitha" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('ajitha','weekly')">
         <input class="add-date" type="date" id="w-date-ajitha">
         <button class="add-go ab-aj" onclick="quickAdd('ajitha','weekly')">＋</button>
@@ -637,7 +631,7 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:11px;lette
       </div>
       <div class="mini-track"><div class="mini-fill mf-sl" id="w-mini-selvi"></div></div>
       <div class="task-list" id="w-list-selvi"></div>
-      <div class="add-row hidden" id="w-add-selvi">
+      <div class="add-row" id="w-add-selvi">
         <input class="add-inp" id="w-inp-selvi" placeholder="Quick add…" onkeydown="if(event.key==='Enter')quickAdd('selvi','weekly')">
         <input class="add-date" type="date" id="w-date-selvi">
         <button class="add-go ab-sl" onclick="quickAdd('selvi','weekly')">＋</button>
@@ -809,7 +803,8 @@ function doLogout(){
   refreshAdminUI();
 }
 function refreshAdminUI(){
-  document.querySelectorAll('.add-row').forEach(r=>r.classList.toggle('hidden',!isAdmin));
+  // Add rows are always visible — password prompt handles auth inline
+  // Only delete buttons are admin-only
   document.querySelectorAll('.rm-btn').forEach(b=>b.style.display=isAdmin?'':'none');
   document.querySelectorAll('.g-del').forEach(b=>b.style.display=isAdmin?'':'none');
 }
@@ -856,14 +851,13 @@ function weekLabel(off=0){
 }
 
 /* ═══════════════════════════════════
-   TAMIL PREFS
+   TAMIL — per-task only (no global pref)
+   Tamil text and TTS show only when task.want_tamil === true
 ═══════════════════════════════════ */
-function loadPref(){ const p=JSON.parse(localStorage.getItem('tPref')||'{"text":false,"tts":false}'); document.getElementById('pref-text').checked=p.text; document.getElementById('pref-tts').checked=p.tts; }
-function savePref(){ localStorage.setItem('tPref',JSON.stringify({text:document.getElementById('pref-text').checked,tts:document.getElementById('pref-tts').checked})); renderDaily(); renderWeekly(); }
-function getPref(){ return JSON.parse(localStorage.getItem('tPref')||'{"text":false,"tts":false}'); }
 
 /* ═══════════════════════════════════
    TAMIL TRANSLATION
+   Gemini API → static map → MyMemory fallback
 ═══════════════════════════════════ */
 const TMAP={
   'water can checking':'தண்ணீர் கேன் சரிபார்க்க வேண்டும்',
@@ -882,7 +876,7 @@ async function toTamil(text){
     try{
       const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,{
         method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({contents:[{parts:[{text:`Translate to Tamil, return ONLY the translation:\n"${text}"`}]}]})
+        body:JSON.stringify({contents:[{parts:[{text:`You are a Tamil translator. Translate the following English household task into natural, colloquial spoken Tamil (not formal written Tamil). Use everyday words a family in Tamil Nadu would say at home. Return ONLY the Tamil translation, nothing else:\n"${text}"`}]}]})
       });
       const j=await r.json();
       const t=j?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
@@ -898,54 +892,119 @@ async function toTamil(text){
 }
 
 /* ═══════════════════════════════════
-   TEXT TO SPEECH — fixed
-   Web Speech API requires voices to load first
+   TEXT TO SPEECH
+   Uses Google Cloud TTS API for natural Tamil speech.
+   Requires GOOGLE_TTS_KEY env var (same GCP project as Gemini).
+   Falls back to browser Web Speech if key not available.
 ═══════════════════════════════════ */
-let ttsVoices=[];
-function loadVoices(){
-  ttsVoices=window.speechSynthesis.getVoices();
-}
-window.speechSynthesis.onvoiceschanged=loadVoices;
-loadVoices(); // try immediately too
+/* ═══════════════════════════════════════════════════════
+   TEXT TO SPEECH via Gemini 2.5 Flash TTS
+   Uses the same GEMINI_API_KEY — no extra billing setup.
+   Model: gemini-2.5-flash-preview-tts
+   Returns raw PCM audio which we play via Web Audio API.
+   Falls back to browser speech if Gemini key not set.
+════════════════════════════════════════════════════════ */
+const audioCache = {};
 
 async function speakTamil(text, btn){
-  const pref=getPref(); if(!pref.tts) return;
-  // Cancel any ongoing speech
-  window.speechSynthesis.cancel();
+  window.speechSynthesis?.cancel();
   btn.classList.add('speaking');
 
-  let tamil=text;
-  try{ tamil=await toTamil(text); }catch(e){}
+  let tamil = text;
+  try { tamil = await toTamil(text); } catch(e){}
 
-  // Ensure voices are loaded
-  if(!ttsVoices.length){
-    ttsVoices=window.speechSynthesis.getVoices();
-    if(!ttsVoices.length){
-      // wait briefly for voices to populate
-      await new Promise(r=>setTimeout(r,300));
-      ttsVoices=window.speechSynthesis.getVoices();
+  if(GEMINI_KEY){
+    try{
+      // Check cache first
+      if(audioCache[tamil]){
+        await playPcm(audioCache[tamil]);
+        btn.classList.remove('speaking');
+        return;
+      }
+
+      // Gemini 2.5 Flash TTS — produces raw 24kHz mono PCM (LINEAR16)
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${GEMINI_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{ text: tamil }]
+            }],
+            generationConfig: {
+              responseModalities: ['AUDIO'],
+              speechConfig: {
+                voiceConfig: {
+                  prebuiltVoiceConfig: {
+                    // Kore = natural, warm female voice — best for Tamil
+                    voiceName: 'Kore'
+                  }
+                }
+              }
+            }
+          })
+        }
+      );
+
+      const j = await res.json();
+      const b64 = j?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+
+      if(b64){
+        audioCache[tamil] = b64;
+        await playPcm(b64);
+        btn.classList.remove('speaking');
+        return;
+      }
+    } catch(e){
+      console.warn('Gemini TTS error:', e);
     }
   }
 
-  const u=new SpeechSynthesisUtterance(tamil);
-  u.lang='ta-IN';
-  u.rate=0.82;
-  u.pitch=1;
+  // Fallback: browser Web Speech API
+  fallbackTTS(tamil, btn);
+}
 
-  // Find Tamil voice, fallback to any Indian English, then any
-  const tamilV = ttsVoices.find(v=>v.lang==='ta-IN'||v.lang==='ta')
-    || ttsVoices.find(v=>v.lang.startsWith('ta'))
-    || ttsVoices.find(v=>v.lang.includes('IN'))
+/* Play raw LINEAR16 PCM (24kHz mono) returned by Gemini TTS */
+async function playPcm(b64){
+  const binary  = atob(b64);
+  const bytes   = new Uint8Array(binary.length);
+  for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+  const sampleRate  = 24000;
+  const numSamples  = bytes.length / 2; // 16-bit = 2 bytes per sample
+  const ctx         = new (window.AudioContext || window.webkitAudioContext)({ sampleRate });
+  const buffer      = ctx.createBuffer(1, numSamples, sampleRate);
+  const channelData = buffer.getChannelData(0);
+
+  // Convert little-endian int16 → float32
+  const view = new DataView(bytes.buffer);
+  for(let i = 0; i < numSamples; i++){
+    const int16 = view.getInt16(i * 2, true); // little-endian
+    channelData[i] = int16 / 32768.0;
+  }
+
+  return new Promise(resolve => {
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.connect(ctx.destination);
+    source.onended = () => { ctx.close(); resolve(); };
+    source.start(0);
+  });
+}
+
+function fallbackTTS(tamil, btn){
+  if(!window.speechSynthesis){ btn.classList.remove('speaking'); return; }
+  const voices = window.speechSynthesis.getVoices();
+  const u = new SpeechSynthesisUtterance(tamil);
+  u.lang = 'ta-IN';
+  u.rate = 0.85;
+  const tamilV = voices.find(v => v.lang === 'ta-IN')
+    || voices.find(v => v.lang.startsWith('ta'))
     || null;
-  if(tamilV) u.voice=tamilV;
-
-  u.onend=()=>btn.classList.remove('speaking');
-  u.onerror=()=>btn.classList.remove('speaking');
-
-  // Chrome bug workaround: speech sometimes stops after ~15s
+  if(tamilV) u.voice = tamilV;
+  u.onend = u.onerror = () => btn.classList.remove('speaking');
   window.speechSynthesis.speak(u);
-
-  btn.classList.add('speaking');
 }
 
 /* ═══════════════════════════════════
@@ -984,9 +1043,9 @@ function inlineEdit(el,cb){
 const TAMIL_SECS=new Set(['d','selvi']);
 
 function buildTaskEl(t, onCheck, onDelete, onEdit){
-  const pref=getPref();
-  const showTamil=TAMIL_SECS.has(t.person)&&pref.text&&(t.want_tamil!==false);
-  const showSpeak=TAMIL_SECS.has(t.person)&&pref.tts&&(t.want_tamil!==false);
+  // Tamil text & speak button shown only when task was assigned with want_tamil=true
+  const showTamil = t.want_tamil === true;
+  const showSpeak = t.want_tamil === true;
   const row=document.createElement('div');
   row.className='t-item'+(t.done?' done':'');
   const metaHtml=t.assigned_by?`<div class="t-meta">
@@ -1149,14 +1208,36 @@ async function resetWeekChecks(){
 }
 
 /* ═══════════════════════════════════
-   QUICK ADD & TASK MODAL
+   QUICK ADD — password-aware
+   If not admin, shows inline password prompt first,
+   then on success unlocks admin and saves the task.
 ═══════════════════════════════════ */
 async function quickAdd(person, board){
-  if(!isAdmin||!SB_OK) return;
+  if(!SB_OK) return;
   const inpId=`${board==='daily'?'d':'w'}-inp-${person}`;
   const dateId=board==='weekly'?`w-date-${person}`:null;
   const inp=document.getElementById(inpId);
-  const text=inp?.value?.trim(); if(!text)return;
+  const text=inp?.value?.trim();
+  if(!text) return;
+
+  // If not yet admin, require password inline before saving
+  if(!isAdmin){
+    const pw=prompt('🔒 Enter admin password to add this task:');
+    if(pw===null) return; // cancelled
+    if(pw !== ADMIN_PW){
+      showInlineError(inpId, 'Wrong password');
+      return;
+    }
+    // Unlock admin silently
+    isAdmin=true;
+    document.getElementById('admin-bar').classList.add('on');
+    document.getElementById('btn-admin').classList.add('on');
+    document.getElementById('btn-admin').textContent='🛡️ Admin';
+    document.getElementById('btn-assign').style.display='';
+    document.getElementById('tab-admin-btn').style.display='';
+    refreshAdminUI();
+  }
+
   const dateKey=board==='daily' ? `${todayStr(dOff)}_${person}` : `${weekStartStr(wOff)}_${person}`;
   const dueDate=dateId?document.getElementById(dateId)?.value:'';
   setSyncDot('saving');
@@ -1165,6 +1246,14 @@ async function quickAdd(person, board){
   if(dateId)document.getElementById(dateId).value='';
   setSyncDot('ok');
   if(board==='daily')renderDaily(); else renderWeekly();
+}
+
+function showInlineError(inpId, msg){
+  const inp=document.getElementById(inpId);
+  if(!inp)return;
+  inp.style.borderColor='#e05050';
+  inp.placeholder=msg;
+  setTimeout(()=>{ inp.style.borderColor=''; inp.placeholder='Quick add…'; },2000);
 }
 
 let tmPeople=[], tmPriority='medium';
@@ -1371,7 +1460,6 @@ async function sendEmail(isCron=false){
    INIT
 ═══════════════════════════════════ */
 async function init(){
-  loadPref();
   if(!SB_OK){
     setSyncDot('local');
     document.querySelectorAll('.task-list').forEach(l=>l.innerHTML='<div class="empty-state"><span class="e-ico">⚙️</span><p>Set SUPABASE_URL &amp; SUPABASE_ANON_KEY in Vercel env vars</p></div>');
