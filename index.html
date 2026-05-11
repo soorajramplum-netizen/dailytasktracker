@@ -1220,24 +1220,7 @@ async function quickAdd(person, board){
   const text=inp?.value?.trim();
   if(!text) return;
 
-  // If not yet admin, require password inline before saving
-  if(!isAdmin){
-    const pw=prompt('🔒 Enter admin password to add this task:');
-    if(pw===null) return; // cancelled
-    if(pw !== ADMIN_PW){
-      showInlineError(inpId, 'Wrong password');
-      return;
-    }
-    // Unlock admin silently
-    isAdmin=true;
-    document.getElementById('admin-bar').classList.add('on');
-    document.getElementById('btn-admin').classList.add('on');
-    document.getElementById('btn-admin').textContent='🛡️ Admin';
-    document.getElementById('btn-assign').style.display='';
-    document.getElementById('tab-admin-btn').style.display='';
-    refreshAdminUI();
-  }
-
+  // Password requirement removed - anyone can add tasks now
   const dateKey=board==='daily' ? `${todayStr(dOff)}_${person}` : `${weekStartStr(wOff)}_${person}`;
   const dueDate=dateId?document.getElementById(dateId)?.value:'';
   setSyncDot('saving');
